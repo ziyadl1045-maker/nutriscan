@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+
+  /* Emerald / Fresh Health Palette */
+  --background: 150 30% 98%;
+  --foreground: 150 50% 10%;
+  
+  --primary: 150 60% 35%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 150 30% 90%;
+  --secondary-foreground: 150 50% 15%;
+  
+  --muted: 150 15% 94%;
+  --muted-foreground: 150 10% 45%;
+  
+  --accent: 35 90% 60%; /* Orange for warnings/callouts */
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 150 20% 90%;
+  --input: 150 20% 90%;
+  --ring: 150 60% 35%;
+  
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-400;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Scan Animation */
+@keyframes scan-line {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.animate-scan {
+  @apply animate-[scan-line_2s_linear_infinite];
+}
+
+/* html5-qrcode overrides for better visibility */
+#reader button {
+  background-color: white !important;
+  color: #064e3b !important; /* text-emerald-900 */
+  border-radius: 0.75rem !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 700 !important;
+  border: none !important;
+  margin: 0.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+}
+
+#reader button:hover {
+  background-color: #f8fafc !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+#reader__status_span {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+#reader__dashboard_section_csr span {
+  color: white !important;
+}
+
+#reader__dashboard_section_csr {
+  color: white !important;
+}
+
+#reader__header_message {
+  color: white !important;
+}
+
+#reader__camera_selection {
+  background-color: white !important;
+  color: #0f172a !important;
+  border-radius: 0.5rem !important;
+  padding: 0.25rem !important;
+}
